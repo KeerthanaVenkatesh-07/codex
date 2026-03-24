@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cyberbullying Detector</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f2f2f2;
+text-align:center;
+margin-top:100px;
+}
+
+.container{
+background:white;
+width:420px;
+margin:auto;
+padding:25px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+textarea{
+width:90%;
+height:100px;
+padding:10px;
+font-size:16px;
+}
+
+button{
+margin-top:10px;
+padding:10px 20px;
+background:#007BFF;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+#result{
+margin-top:15px;
+font-size:18px;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>AI Cyberbullying Detector</h2>
+
+<p>Type a comment</p>
+
+<textarea id="comment" onkeyup="detect()" placeholder="Type comment here..."></textarea>
+
+<br>
+
+<button onclick="detect()">Check Comment</button>
+
+<p id="result"></p>
+
+</div>
+
+<script>
+
+function detect(){
+
+let text=document.getElementById("comment").value.toLowerCase();
+
+let badWords=[
+"stupid",
+"idiot",
+"hate",
+"loser",
+"ugly",
+"useless",
+"fool"
+];
+
+let found=false;
+
+for(let i=0;i<badWords.length;i++){
+
+if(text.includes(badWords[i])){
+found=true;
+break;
+}
+
+}
+
+let result=document.getElementById("result");
+
+if(found){
+
+result.innerHTML="⚠ Warning: Cyberbullying Language Detected";
+result.style.color="red";
+
+}
+else{
+
+result.innerHTML="✔ Comment Looks Safe";
+result.style.color="green";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
